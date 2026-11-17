@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: user-service
+  #  DB Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev
+    username:
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+  #Kafka
+  kafka:
+    boostrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+
+server:
+  port: 9050
+
+kafka:
+  topic:
+    user-topic: user-topic
+    user-created-topic: user-created-topic
+
+
+
+
+
+
+
+
+
+
+
+
+
